@@ -1,9 +1,9 @@
-name: Mostrar usuário do push
+name: Mostrar usuário  do push
 
 on:
   push:
     branches:
-      - main
+      - main  
 
 jobs:
   mostrar_push:
@@ -11,4 +11,7 @@ jobs:
 
     steps:
       - name: Mostrar info do push
-        run: echo "Usuário que fez o push: ${{ github.actor }}"
+        run: |
+          echo "Workflow executado automaticament"
+          echo "Usuário que fez o push: ${{ github.actor }}"
+          
