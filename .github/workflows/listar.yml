@@ -1,0 +1,14 @@
+name: Mostrar diretorio
+
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mostrar_push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mostrar diretorio
+        run: "ls"
+          
