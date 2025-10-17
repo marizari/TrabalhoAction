@@ -11,11 +11,11 @@ jobs:
       - name: Baixar código
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} 
+          persist-credentials: true 
       - name: Criar README.md
         run: |
           echo "# Meu README Automático" > README.md
-          echo "Este arquivo foi criado pelo GitHub Actions." >> README.md
+          echo "Criado pelo GitHub Actions em $(date '+%d/%m/%Y %H:%M:%S')" >> README.md
 
       - name: Commitar e enviar
         run: |
