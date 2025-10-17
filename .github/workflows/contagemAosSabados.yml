@@ -1,0 +1,23 @@
+name: Rodar step apenas aos sábados
+
+on:
+  workflow_dispatch:   # ou schedule se quiser agendamento
+  schedule:
+    - cron: '0 10 * * *' # roda todos os dias às 10:00 UTC
+
+jobs:
+  exemplo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Step que roda só sábado
+
+        run: |
+          dia=$(date +%u)  # 1=segunda ... 7=sábado
+          if [ "$dia" -eq 6 ]; then
+            echo "Hoje é sábado! Rodando step..."
+          else
+            echo "Não é sábado. Pulando step."
+          fi
