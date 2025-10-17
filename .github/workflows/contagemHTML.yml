@@ -1,16 +1,13 @@
 name: Contagem de arquivos HTML
-
 on:
   workflow_dispatch:
 
 jobs:
-  contagem_html:
+  contar:
     runs-on: ubuntu-latest
     steps:
-
+      - uses: actions/checkout@v4
       - name: Contar arquivos HTML
-        id: contar_html
         run: |
           count=$(find . -type f -name "*.html" | wc -l)
-          echo "Totoal de arquivo HTML" $count
-          
+          echo " Total de arquivos HTML: $count"
