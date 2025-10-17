@@ -1,0 +1,18 @@
+
+name: Criar arquivo de texto
+
+on:
+  workflow_dispatch:  
+
+jobs:
+  criar_arquivo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código do repositório
+        uses: actions/checkout@v4
+
+      - name: Criar arquivo README.md
+        run: |
+          echo "# Meu README Automático" > README.md
+          echo "Este arquivo foi criado pelo GitHub Actions." >> README.md

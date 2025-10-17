@@ -10,6 +10,6 @@ jobs:
     steps:
       - name: Exibir data e hora atual
         run: |
-          echo "Workflow executado manualmente! 🕒"
+          echo "Workflow executado manualmente!"
           echo "Data e hora do servidor (UTC): $(date -u)"
           echo "Data e hora local (Horário de Brasília): $(TZ='America/Sao_Paulo' date '+%d/%m/%Y %H:%M:%S')"
