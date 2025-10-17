@@ -7,12 +7,10 @@ jobs:
   contagem_html:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do repositório
-        uses: actions/checkout@v3
 
       - name: Contar arquivos HTML
         id: contar_html
         run: |
           count=$(find . -type f -name "*.html" | wc -l)
-          echo "html_count=$count" >> $GITHUB_OUTPUT
+          echo "Totoal de arquivo HTML" $count
           
