@@ -1,14 +1,17 @@
-name: Mostrar diretorio
-
+name: Listar diretório completo
 
 on:
   workflow_dispatch:
 
 jobs:
-  mostrar_push:
+  listar:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Mostrar diretorio
-        run: "ls -la"
-          
+      - name: Baixar código do repositório
+        uses: actions/checkout@v4
+
+      - name: Listar arquivos e pastas
+        run: |
+          echo "Arquivos e pastas no diretório atual:"
+          ls -la
