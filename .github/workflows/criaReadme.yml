@@ -1,26 +1,27 @@
-name: Criar README e enviar
+name: Criar/Atualizar README e enviar
 
 on:
   workflow_dispatch:
 
 jobs:
-  criar_e_commit:
+  criar_e_enviar:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Baixar código
+      - name: Baixar código do repositório
         uses: actions/checkout@v4
         with:
           persist-credentials: true 
-      - name: Criar README.md
+
+      - name: Criar ou atualizar README.txt
         run: |
-          echo "# Meu README Automático" > README.md
-          echo "Criado pelo GitHub Actions em $(date '+%d/%m/%Y %H:%M:%S')" >> README.md
+          echo "# Meu README Automático" > README.txt
+          echo "Atualizado pelo GitHub Actions em $(date '+%d/%m/%Y %H:%M:%S')" >> README.txt
 
       - name: Commitar e enviar
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add README.md
-          git commit -m "Criar README automaticamente"
+          git add README.txt
+          git commit -m "Atualizar README automaticamente" || echo "Nada para commitar"
           git push
