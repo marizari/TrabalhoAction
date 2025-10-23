@@ -1,5 +1,5 @@
 
-name: Contar arquivos HTML à meia-noite 
+name: Contar arquivos à meia-noite 
 
 on:
   schedule:
@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Contar arquivos HTML
+      - name: Contar arquivos meia noite
         run: |
           export TZ="America/Sao_Paulo"
           count=$(find . -type f | wc -l)
           echo "Agora são $(date +%H:%M) BRT"
-          echo "Total de arquivos HTML: $count"
+          echo "Total de arquivos: $count"
