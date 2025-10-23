@@ -1,0 +1,16 @@
+name: Calcular 2+2 variável no terminal
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Permite disparar o workflow manualmente
+
+jobs:
+  calcular:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Calcular 2 + 2
+        run: |
+          resultado=$((2 + 2))
+          echo "O resultado de 2 + 2 é: $resultado"
