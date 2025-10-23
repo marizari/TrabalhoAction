@@ -1,0 +1,29 @@
+name: Informações dos Arquivos e infos
+
+on:
+  workflow_dispatch:
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 📅 Mostrar data e hora atual (horário de Brasília)
+        run: |
+          echo "🕒 Data e hora atual (Brasília): $(TZ='America/Sao_Paulo' date '+%d/%m/%Y %H:%M:%S')"
+
+      - name: 👤 Mostrar usuário que executou
+        run: |
+          echo "👤 Executado por: ${{ github.actor }}"
+
+      - name: 📊 Contar arquivos HTML, CSS e JS
+        run: |
+          html=$(find . -type f -name "*.html" | wc -l)
+          css=$(find . -type f -name "*.css" | wc -l)
+          js=$(find . -type f -name "*.js" | wc -l)
+          echo "📄 HTML: $html"
+          echo "🎨 CSS: $css"
+          echo "⚙️  JS: $js"
+          echo "🔢 Total: $((html + css + js))"
