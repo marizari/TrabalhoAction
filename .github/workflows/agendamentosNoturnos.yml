@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Verificar se a hora do dia é noite
         run: |
+        export TZ="America/Sao_Paulo"
           horas=$(date +%H)
           if [ "$horas" -ge 18 ]; then
             echo "Aberto. Rodando o agendamento."
