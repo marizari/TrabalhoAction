@@ -1,0 +1,20 @@
+name: if agendamento rodar apenas durante a noite
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  somente-noite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar se a hora do dia é noite
+        run: |
+          horas=$(date +%H)
+          if [ "$horas" -ge 18 ]; then
+            echo "Aberto. Rodando o agendamento."
+          else
+            echo "Fechado. Só funcionamos no período da noite."
+          fi
