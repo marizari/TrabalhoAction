@@ -1,0 +1,15 @@
+name: Listar arquivos
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # permite rodar manualmente
+
+jobs:
+  listar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # baixa o repositório pra máquina virtual, uses usar ação pronta
+      - name: Listar arquivos
+        run: ls -la
