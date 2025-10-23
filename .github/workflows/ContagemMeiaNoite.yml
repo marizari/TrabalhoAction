@@ -1,8 +1,9 @@
-name: agendamento toda meia noite contar a quantidade de arquivos
+
+name: Contar arquivos HTML à meia-noite 
 
 on:
   schedule:
-    - cron: "0 0 * * *"  
+    - cron: "0 3 * * *" 
   workflow_dispatch:      
 
 jobs:
@@ -12,6 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Contar arquivos HTML
         run: |
-          count=$(find . -type f -name "*.html" | wc -l)
-          echo "Agora são $(date +%H:%M) UTC"
+          export TZ="America/Sao_Paulo"
+          count=$(find . -type f | wc -l)
+          echo "Agora são $(date +%H:%M) BRT"
           echo "Total de arquivos HTML: $count"
