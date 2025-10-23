@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checar repositório
+      - name: Checar-repositório
         uses: actions/checkout@v3
 
-      - name: Contar arquivos
+      - name: Contar-arquivos
         run: |
           export TZ="America/Sao_Paulo"
           hora=$(date +%H)
