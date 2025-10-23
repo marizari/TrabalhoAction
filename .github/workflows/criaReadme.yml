@@ -15,6 +15,7 @@ jobs:
 
       - name: Criar ou atualizar README.txt
         run: |
+          export TZ="America/Sao_Paulo"
           echo "# Meu README Automático" > README.txt
           echo "Atualizado pelo GitHub Actions em $(date '+%d/%m/%Y %H:%M:%S')" >> README.txt
 
