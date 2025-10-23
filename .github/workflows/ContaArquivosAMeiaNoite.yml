@@ -2,7 +2,7 @@ name: Contagem de arquivos HTML à meia-noite com if
 
 on:
   schedule:
-    - cron: "0 3 * * *"  # 03:00 UTC = 00:00 
+    - cron: "0 3 * * *"  
   workflow_dispatch:     
 
 jobs:
