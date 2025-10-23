@@ -1,25 +1,16 @@
-name: Contagem de arquivos HTML à meia-noite com if
+name: Agendamento toda meia noite contar a quantidade de arquivos
 
 on:
   schedule:
     - cron: "0 3 * * *"  
-  workflow_dispatch:     
 
 jobs:
   contar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Contar arquivos HTML apenas se for noite
+      - name: Contar arquivos HTML
         run: |
           export TZ="America/Sao_Paulo"
-          horas=$(date +%H)
-          echo "Agora são $horas horas (BRT)"
-          
-          # IF: só roda se for noite (18h ou mais)
-          if [ "$horas" -ge 18 ]; then
-            count=$(find . -type f -name "*.html" | wc -l)
-            echo "É noite! Total de arquivos HTML: $count"
-          else
-            echo "Não é noite. Workflow não vai contar arquivos."
-          fi
+          count=$(find . -type f | wc -l)
+          echo "Meia-noite! Total de arquivos: $count"
