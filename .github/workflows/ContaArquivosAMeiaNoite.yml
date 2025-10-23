@@ -1,16 +1,24 @@
-name: Agendamento toda meia noite contar a quantidade de arquivos
+name: agendamento toda meia noite contar a quantidade de arquivos
 
 on:
   schedule:
-    - cron: "0 3 * * *"  
+    - cron: '0 3 * * *'  
+  workflow_dispatch:
 
 jobs:
-  contar:
+  contar-arquivos:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Contar arquivos HTML
+      - name: Checar repositório
+        uses: actions/checkout@v3
+
+      - name: Contar arquivos
         run: |
           export TZ="America/Sao_Paulo"
-          count=$(find . -type f | wc -l)
-          echo "Meia-noite! Total de arquivos: $count"
+          hora=$(date +%H)
+          if [ "$hora" -eq 0 ]; then
+            total=$(find . -type f | wc -l)
+            echo "Total de arquivos à meia-noite: $total"
+          else
+            echo "Não é meia-noite ainda."
