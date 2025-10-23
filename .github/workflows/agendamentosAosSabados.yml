@@ -10,7 +10,7 @@ jobs:
   somente-noite:
     runs-on: ubuntu-latest
     steps:
-      - name: Verificar horário
+      - name: Verificar se o dia da semana é sábado
         run: |
           DiaDaSemana=$(date +%u)
           if [ "$DiaDaSemana" -eq 6 ]; then
