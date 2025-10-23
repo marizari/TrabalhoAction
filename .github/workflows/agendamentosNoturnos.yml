@@ -13,7 +13,7 @@ jobs:
       - name: Verificar se a hora do dia é noite
         run: |
           export TZ="America/Sao_Paulo"
-          horas=$(date +%H)
+          horas=$(date +%H:%M:%S)
           echo "Agora são $horas horas (horário de Brasília)."
           if [ "$horas" -ge 18 ]; then
             echo "Aberto. Rodando o agendamento."
