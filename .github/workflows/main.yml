@@ -1,0 +1,17 @@
+name: agendamento toda meia noite contar a quantidade de arquivos
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  
+  workflow_dispatch:      
+
+jobs:
+  contar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Contar arquivos HTML
+        run: |
+          count=$(find . -type f -name "*.html" | wc -l)
+          echo "Agora são $(date +%H:%M) UTC"
+          echo "Total de arquivos HTML: $count"
