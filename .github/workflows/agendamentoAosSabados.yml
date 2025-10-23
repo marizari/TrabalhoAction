@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  somente-noite:
+  somente-sabados:
     runs-on: ubuntu-latest
     steps:
       - name: Verificar se o dia da semana é sábado
